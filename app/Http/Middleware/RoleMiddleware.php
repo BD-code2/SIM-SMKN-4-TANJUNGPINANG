@@ -1,0 +1,36 @@
+<?php
+
+namespace App\Http\Middleware;
+
+use Closure;
+use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
+
+class RoleMiddleware
+{
+    public function handle(Request $request, Closure $next, string ...$roles): Response
+    {
+        if (! $request->user()) {
+            return redirect()->route('login');
+        }
+
+        if (! $request->user()->is_active) {
+            auth()->logout();
+            return redirect()->route('login')->with('error', 'Akun Anda dinonaktifkan. Silakan hubungi admin.');
+        }
+
+        if (empty($roles)) {
+            return $next($request);
+        }
+
+        if ($request->user()->isAdmin()) {
+            return $next($request);
+        }
+
+        if (in_array($request->user()->role, $roles)) {
+            return $next($request);
+        }
+
+        abort(403, 'Anda tidak memiliki hak akses untuk halaman ini.');
+    }
+}
