@@ -21,7 +21,7 @@
         <header class="relative z-10 max-w-7xl mx-auto w-full px-6 py-6 flex items-center justify-between">
             <div class="flex items-center gap-4">
                 <div class="w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-md p-1.5 border border-white/20 flex items-center justify-center">
-                    <img src="{{ asset('images/logo-smkn4.png') }}" alt="Logo" class="w-full h-full object-contain">
+                    <img src="{{ file_exists(public_path('images/logo-smkn4.png.b64')) ? 'data:image/png;base64,' . trim(file_get_contents(public_path('images/logo-smkn4.png.b64'))) : asset('images/logo-smkn4.png') }}" alt="Logo" class="w-full h-full object-contain">
                 </div>
                 <div>
                     <span class="block text-xs uppercase tracking-widest text-blue-300 font-semibold">Pemerintah Provinsi Kepulauan Riau</span>

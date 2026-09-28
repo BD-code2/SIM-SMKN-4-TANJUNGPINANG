@@ -30,12 +30,13 @@
 </head>
 <body>
 @php
-    $toB64 = function ($path) {
-        return file_exists($path) ? 'data:image/png;base64,' . base64_encode(file_get_contents($path)) : '';
+    $toDataUri = function ($file, $mime) {
+        $p = public_path('images/' . $file);
+        return file_exists($p) ? "data:{$mime};base64," . trim(file_get_contents($p)) : '';
     };
-    $bgImg     = $toB64(public_path('images/sertifikat-bg.png'));
-    $logoKepri = $toB64(public_path('images/logo-kepri.png'));
-    $logoSmkn4 = $toB64(public_path('images/logo-smkn4.png'));
+    $bgImg     = $toDataUri('sertifikat-bg.png.b64', 'image/png');
+    $logoKepri = $toDataUri('logo-kepri.jpg.b64', 'image/jpeg');
+    $logoSmkn4 = $toDataUri('logo-smkn4.png.b64', 'image/png');
 @endphp
 
     <img class="bg" src="{{ $bgImg }}" alt="">

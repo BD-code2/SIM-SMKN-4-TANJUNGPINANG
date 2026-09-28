@@ -13,7 +13,7 @@
         <!-- Logo & Brand Card -->
         <div class="text-center mb-8">
             <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-white shadow-md p-2 mb-3 border border-slate-200">
-                <img src="{{ asset('images/logo-smkn4.png') }}" alt="Logo" class="w-full h-full object-contain">
+                <img src="{{ file_exists(public_path('images/logo-smkn4.png.b64')) ? 'data:image/png;base64,' . trim(file_get_contents(public_path('images/logo-smkn4.png.b64'))) : asset('images/logo-smkn4.png') }}" alt="Logo" class="w-full h-full object-contain">
             </div>
             <h1 class="text-2xl font-bold text-slate-800 tracking-tight">SIM SEKOLAH</h1>
             <p class="text-sm text-slate-500">SMKN 4 TANJUNGPINANG</p>
