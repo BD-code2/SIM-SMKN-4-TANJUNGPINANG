@@ -40,6 +40,12 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6 text-sm">
             <div class="space-y-3">
                 <div>
+                    <span class="text-xs text-slate-400 block">Tempat / Tanggal Lahir</span>
+                    <span class="font-semibold text-slate-800">
+                        {{ $sertifikat->tempat_lahir ?? '-' }}{{ $sertifikat->tempat_lahir && $sertifikat->tanggal_lahir ? ', ' : '' }}{{ $sertifikat->tanggal_lahir ? $sertifikat->tanggal_lahir->locale('id')->translatedFormat('d F Y') : '' }}
+                    </span>
+                </div>
+                <div>
                     <span class="text-xs text-slate-400 block">Mitra Industri (DUDI)</span>
                     <span class="font-semibold text-slate-800">{{ $sertifikat->industri->nama_industri ?? '-' }}</span>
                 </div>
