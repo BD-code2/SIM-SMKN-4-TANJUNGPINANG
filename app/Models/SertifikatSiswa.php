@@ -16,6 +16,8 @@ class SertifikatSiswa extends Model
         'siswa_user_id',
         'nama_siswa',
         'nisn',
+        'tempat_lahir',
+        'tanggal_lahir',
         'kelas',
         'program_keahlian',
         'kerja_sama_industri_id',
@@ -33,6 +35,7 @@ class SertifikatSiswa extends Model
     protected function casts(): array
     {
         return [
+            'tanggal_lahir' => 'date',
             'tanggal_mulai_pkl' => 'date',
             'tanggal_selesai_pkl' => 'date',
             'diterbitkan_pada' => 'datetime',
